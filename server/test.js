@@ -9,8 +9,6 @@ const data = {
     ciudad: "Barcelona"
 }
 
-//repository.Create(data)
-//repository.Delete(1)
 
 repository.Create(data)
     .then(result => {
