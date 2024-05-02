@@ -1,0 +1,43 @@
+.card{
+    display: flex;
+    margin: 1vh;
+    height: fit-content;
+    background-color: aliceblue;
+    border-radius: 20px;
+    padding-left: 30px;
+    border: 3px solid aliceblue;
+    overflow: hidden;
+}
+
+.info{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    color: rgb(19,19,19);
+    width: 100%;
+}
+.info p{
+    margin-left: 15px;
+}
+
+.buttons img{
+    margin: 5px;
+    padding: 5px;
+    height: 35px;
+    border: 1px solid #191919;
+    border-radius: 35%;
+    background-color: aliceblue;
+    transition: all 0.3s ease;
+}
+
+.buttons img:hover{
+    height: 40px;
+}
+
+.buttonContainer{
+    margin-top: 10px;
+    width: 40%;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    margin-right: 8px;
+}

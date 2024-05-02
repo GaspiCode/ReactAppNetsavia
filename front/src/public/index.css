@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-family: monospace;
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.87);
+
+  background-image: url("../public/png/background.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  font-synthesis: none;
+
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#root{
+  height: 80%;
+  width: 80%;
+}
+
+@media(width > 1080px){
+  #root{
+    width: 60%;
+  }
+}
+
+
+
+
