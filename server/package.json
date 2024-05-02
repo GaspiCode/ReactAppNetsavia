@@ -1,7 +1,9 @@
 {
   "scripts": 
   {
-    "dev": "node server.js"
+    "server": "node server.js",
+    "repo": "node repository.js",
+    "test": "node test.js"
   },
   "dependencies": {
     "express": "^4.19.2"
