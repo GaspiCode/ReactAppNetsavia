@@ -9,6 +9,17 @@ const config = {
   module: {
     rules: [
       {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'images/', // Carpeta de salida para las imágenes
+        }
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"]
+      },
+      {
         test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
@@ -18,6 +29,7 @@ const config = {
             }
         }
       }
+      
     ]
   },
   mode: 'development'

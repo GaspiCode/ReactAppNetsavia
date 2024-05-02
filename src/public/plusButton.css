@@ -1,0 +1,16 @@
+.plusButtonContainer{
+    background-color: aliceblue;
+    border-top-left-radius: 18px;
+    border-top-right-radius: 18px;
+}
+
+.plusButtonContainer img{
+    margin: 3px;
+    margin-left: 10px;
+    height: 50px;
+    transition: all 0.3s ease;
+}
+
+.plusButtonContainer img:hover{ 
+    height: 55px;
+}
