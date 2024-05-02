@@ -1,9 +1,9 @@
 {
-  "scripts": 
-  {
+  "scripts": {
     "server": "node server.js",
     "repo": "node repository.js",
-    "test": "node test.js"
+    "test": "node test.js",
+    "build": "vite build"
   },
   "dependencies": {
     "express": "^4.19.2"

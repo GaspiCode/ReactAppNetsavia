@@ -1,13 +1,13 @@
 [
   {
     "id": 2,
-    "nombre": "Juan",
+    "nombre": "juan",
     "edad": 32,
     "ciudad": "Barcelona"
   },
   {
     "id": 1,
-    "nombre": "Mateo",
+    "nombre": "javier",
     "edad": 32,
     "ciudad": "Barcelona"
   }
