@@ -1,7 +1,7 @@
 .displayer{
-    border: 5px solid aliceblue;
-    border-bottom-left-radius: 20px;;
-    border-bottom-right-radius: 20px;;
+    border: 5px solid rgb(230, 230, 230);
+    border-bottom-left-radius: 1.6rem;
+    border-bottom-right-radius: 1.6rem;;
     border-collapse: collapse;
     height: 100%;
     overflow-y: auto;

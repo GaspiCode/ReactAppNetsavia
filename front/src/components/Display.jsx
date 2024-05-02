@@ -1,13 +1,41 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
 import { Card } from './Card'
 import '../public/display.css'
 
-export const Display = ({array}) => {
+export const Display = ({}) => {
+
+  const [datos, setDatos] = useState([]);
+
+  useEffect(() => {
+    const obtenerDatos = async () => {
+      try {
+        const response = await fetch('/Data')
+        const jsonData = await response.json()
+        setDatos(jsonData)
+      } catch (err) {
+        console.error('Error (Display): Error en la solicitud',err)
+      }
+    }
+    obtenerDatos()
+  }, [])
+  
+  const data = {
+    id: 1,
+    nombre: "Mateo",
+    edad: 32,
+    ciudad: "Barcelona"
+  }
+  datos.push(data)
+
+
   return (
     <div className="displayer">
         <ul>
-            {array.map((item, index) => (
-                <li id={index}><Card title={item}/></li>
+            {datos.map((item) => (
+                <li key={item.id}>
+                  <Card id={item.id} nombre={item.nombre} edad={item.edad} ciudad={item.ciudad}/>
+                </li>
             ))}
         </ul>
     </div>

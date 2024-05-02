@@ -5,15 +5,11 @@
 }
 
 :root {
-  font-family: monospace;
+  font-family: system-ui,'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
   line-height: 1.5;
 
-  color: rgba(255, 255, 255, 0.87);
-
-  background-image: url("../public/png/background.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  color: rgb(230, 230, 230);
+  background-color: black;
   
   font-synthesis: none;
 
