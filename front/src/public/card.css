@@ -50,3 +50,9 @@
     align-items: end;
     margin-right: 0.7rem;
 }
+
+@media (max-width: 510px){
+    .buttonContainer{
+       width: 100%;
+    }
+}

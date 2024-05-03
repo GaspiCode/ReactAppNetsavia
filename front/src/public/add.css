@@ -39,11 +39,11 @@
 }
 
 
-.buttonOk{
+.addbuttonOk{
     position: relative;
     margin-left: 4.7rem;
 }
-.buttonOk input{
+.addbuttonOk input{
     position: absolute;
     opacity: 0;
     height: 100%;
@@ -52,21 +52,21 @@
     left: 0;
 }
 
-.buttonOk img{
+.addbuttonOk img{
     top:0;
     left: 0;
     height: 3.1rem;
 }
 
-.buttonQuit img{
+.addbuttonQuit img{
     height: 3.1rem;
 }
 
-.buttonQuit{
+.addbuttonQuit{
     position: relative;
 }
 
-.buttonQuit button{
+.addbuttonQuit button{
     position: absolute;
     opacity: 0;
     height: 100%;

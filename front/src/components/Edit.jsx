@@ -8,15 +8,15 @@ export const Edit = () => {
 
   useEffect(() => {
 
-    const okButton = document.querySelector('.buttonOk input')
-    const quitButton = document.querySelector('.buttonQuit button')
+    const okButton = document.querySelector('.editbuttonOk input')
+    const quitButton = document.querySelector('.editbuttonQuit button')
 
     if(okButton && quitButton){
       okButton.addEventListener('click',handleOkButtonClick)
       quitButton.addEventListener('click',handleQuitButtonClick)
     }
     else{
-      console.log('Error (Add): addButton o quitButton fue null')
+      console.log('Error (Add): okButton o quitButton fue null')
     }
    
     return() => {
