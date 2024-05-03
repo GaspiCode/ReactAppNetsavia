@@ -3,10 +3,10 @@
     flex-direction: column;
     border-radius: 2rem;
     border-collapse: collapse;
-    border: 5px solid rgb(230, 230, 230);
+    border: 5px solid rgb(19,19,19);
     height: 100%;
     width: 100%;
     background-color: black;
-
+    transition: all 0.3s ease;
 }
 

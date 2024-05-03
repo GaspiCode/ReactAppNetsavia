@@ -20,13 +20,13 @@ export const Display = ({}) => {
     obtenerDatos()
   }, [])
   
-  // const data = {
-  //   id: 1,
-  //   nombre: "Mateo",
-  //   edad: 32,
-  //   ciudad: "Barcelona"
-  // }
-  // datos.push(data)
+  const data = {
+    id: 1,
+    nombre: "Mateo",
+    edad: 32,
+    ciudad: "Barcelona"
+  }
+  datos.push(data)
 
 
   return (

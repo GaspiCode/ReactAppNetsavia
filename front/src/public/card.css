@@ -2,34 +2,38 @@
     display: flex;
     margin: 0.5rem;
     height: fit-content;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(19,19,19);
     border-radius: 1rem;
     padding-left: 2rem;
     overflow: hidden;
 }
 
 .info{
+    color:rgb(101, 185, 116);
     margin-top: 0.2rem;
     margin-bottom: 0.6rem;
-    color: rgb(19,19,19);
     width: 100%;  
+}
+.info h1{
+    font-weight: 300;
 }
 .info p{
     margin-left: 15px;
+    font-weight: 300;
 }
 
 .buttons img{
-    margin: 0.3rem;
-    padding: 0.3rem;
-    height: 2.1rem;
-    border: 1px solid #191919;
-    border-radius: 35%;
-    background-color: rgb(230, 230, 230);
+    margin: 0.2rem;
+    padding: 0.2rem;
+    height: 2.3rem;
+    border: 0.12rem solid rgb(101, 185, 116);
+    border-radius: 20%;
+    background-color: rgb(19,19,19);
     transition: all 0.3s ease;
 }
 
 .buttons img:hover{
-    padding: 0.2rem;
+    height: 2.5rem;
 }
 
 .buttonContainer{

@@ -1,5 +1,5 @@
 .plusButtonContainer{
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(19,19,19);
     border-top-left-radius: 1.5rem;
     border-top-right-radius: 1.5rem;
 }
@@ -9,7 +9,7 @@
     margin: 0.12rem;
     height: 3.7rem;
     border-radius: 100%;
-    background-color: rgb(230, 230, 230);
+    background-color: rgb(19,19,19);
     border: 0;
 }
 
