@@ -31,8 +31,8 @@ export const PlusButton = () => {
     const add = document.querySelector('.addContainer')
     const container = document.querySelector('.container')
     if(add && container){
-      container.style.transform = 'translate(20%, 0)'
-      add.style.transform = 'translate(-200%, -50%)'
+      container.style.transform = 'translate(500%, 0)'
+      add.style.transform = 'translate(-50%, -50%)'
     }
     else{
       console.log('Error (PlusButton): add o container fue null')
