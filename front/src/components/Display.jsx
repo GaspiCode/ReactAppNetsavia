@@ -2,42 +2,24 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { Card } from './Card'
 import '../public/display.css'
+import { displayDataFetcher_Debug, displayDataFetcher } from '../dataFetchers';
 
-export const Display = ({}) => {
+export const Display = () => {
 
-  const [datos, setDatos] = useState([]);
+  const [datos, setDatos] = useState([])
 
-  useEffect(() => {
-    const obtenerDatos = async () => {
-      try {
-        const response = await fetch('/Data')
-        const jsonData = await response.json()
-        setDatos(jsonData)
-      } catch (err) {
-        console.error('Error (Display): Error en la solicitud',err)
-      }
-    }
-    obtenerDatos()
+  const handleDisplayDataFetcher = async () => {
+    const data = await displayDataFetcher()
+    setDatos(data)
+  }
+
+  useEffect(() => { 
+    const display = document.querySelector('.displayer')
+    display.addEventListener('resetEvent',handleDisplayDataFetcher)
+
+    handleDisplayDataFetcher()
   }, [])
   
-  const data = {
-    id: 1,
-    nombre: "Mateo",
-    edad: 32,
-    ciudad: "Barcelona"
-  }
-  datos.push(data)
-
-  const data2 = {
-    id: 2,
-    nombre: "Gaspar",
-    edad: 22,
-    ciudad: "buenos aires"
-  }
-  datos.push(data2)
-
-
-
   return (
     <div className="displayer">
         <ul>

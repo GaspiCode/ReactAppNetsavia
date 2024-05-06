@@ -4,22 +4,28 @@ import okIcon from '../public/png/ok.png'
 import quitIcon from '../public/png/quit.png'
 
 import { addReseter } from '../dataReseters'
+import { displayReloader } from '../dataReloaders'
 import { addValidator } from '../dataValidators'
-import { addDataHandler } from '../dataHandlers'
+import { addDataFetcher } from '../dataFetchers'
 import { addViewHandler } from '../viewHandlers'
 
 
 export const Add = () => {
 
-  const handleAddOk = () => {
+  const handleAddOk = async () => {
     const data = addValidator()
     if (!data) {
       console.error('Error (handleAdd): data fue null')
       return
     }
-    addDataHandler(data)
-    addViewHandler()
-    addReseter()
+    try {
+      await addDataFetcher(data);
+      addViewHandler();
+      addReseter();
+      displayReloader();
+    } catch (error) {
+      console.error('Error (handleAdd):', error);
+    }
   }
 
   const handleAddQuit = () => {

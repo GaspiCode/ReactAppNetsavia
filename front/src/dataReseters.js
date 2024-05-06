@@ -7,3 +7,4 @@ export const addReseter = () => {
     cityField.value = ''
     ageField.value = ''
   }
+
