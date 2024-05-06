@@ -10,5 +10,17 @@
     "nombre": "javier",
     "edad": 32,
     "ciudad": "Barcelona"
+  },
+  {
+    "id": null,
+    "nombre": "Pablo",
+    "edad": "23",
+    "ciudad": "Cordoba"
+  },
+  {
+    "id": null,
+    "nombre": "Martina",
+    "edad": "32",
+    "ciudad": "Rosario"
   }
 ]

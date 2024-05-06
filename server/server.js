@@ -7,6 +7,7 @@ const Repository = require('./repository')
 const repository = new Repository
 
 app.use(express.static(path.join(__dirname,'../front/dist')))
+app.use(express.json())
 
 app.get('/', (res) => {
      res.sendFile(path.join(__dirname,'../front/dist/index.html'))
@@ -21,7 +22,15 @@ app.get('/data',async (req,res) =>{
     }
 })
 
-
+app.post('/data', async (req,res) =>{
+    try{
+        await repository.Create(req.body)
+        res.status(200).send('OK')
+    } catch(err){
+        console.error(err)
+    }
+    
+})
 
 
 app.listen(port,(res) => {

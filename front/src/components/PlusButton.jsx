@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import plusIcon from '../public/png/plus.png'
 import '../public/plusButton.css'
+import { viewhandler_PlusButtonClick } from '../viewHandlers'
 export const PlusButton = () => {
 
   useEffect(() => {
@@ -9,7 +10,7 @@ export const PlusButton = () => {
  
 
     if(plusButton){
-      plusButton.addEventListener('click',handleClick)
+      plusButton.addEventListener('click',viewhandler_PlusButtonClick)
     }
     else{
       console.log('Error (PlusButton): plusButton fue null')
@@ -18,7 +19,7 @@ export const PlusButton = () => {
    
     return() => {
       if(plusButton){
-        plusButton.removeEventListener('click',handleClick)
+        plusButton.removeEventListener('click',viewhandler_PlusButtonClick)
       }
       else{
         console.log('Error (PlusButton): plusButton fue null')
@@ -26,23 +27,10 @@ export const PlusButton = () => {
     }
   }, [])
 
-  
-  const handleClick = () => {
-    const add = document.querySelector('.addContainer')
-    const container = document.querySelector('.container')
-    if(add && container){
-      container.style.transform = 'translate(500%, 0)'
-      add.style.transform = 'translate(-50%, -50%)'
-    }
-    else{
-      console.log('Error (PlusButton): add o container fue null')
-    }
-
-  }
 
   return (
     <div className='plusButtonContainer'>
-      <button onClick={handleClick()}>
+      <button>
         <img src={plusIcon} alt="Icono Añadir" />
       </button>
     </div>

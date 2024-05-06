@@ -43,7 +43,7 @@
     position: relative;
     margin-left: 4.7rem;
 }
-.addbuttonOk input{
+.addbuttonOk button{
     position: absolute;
     opacity: 0;
     height: 100%;
@@ -84,12 +84,11 @@
 
 .addInfo label{
     font-size: large;
-    margin-left: 0.6rem;
-    
+    margin-left: 0.6rem;   
 }
 
-
 .addInfo input{
+    color: white;
     margin-left: 0.6rem;
     margin-right: 0.6rem;
     height: 1.4rem;

@@ -2,89 +2,56 @@ import React from 'react'
 import '../public/add.css'
 import okIcon from '../public/png/ok.png'
 import quitIcon from '../public/png/quit.png'
-import { useEffect } from 'react'
+
+import { addReseter } from '../dataReseters'
+import { addValidator } from '../dataValidators'
+import { addDataHandler } from '../dataHandlers'
+import { addViewHandler } from '../viewHandlers'
 
 
 export const Add = () => {
 
-  useEffect(() => {
-
-    const okButton = document.querySelector('.addbuttonOk input')
-    const quitButton = document.querySelector('.addbuttonQuit button')
-
-    if(okButton && quitButton){
-      okButton.addEventListener('click',handleOkButtonClick)
-      quitButton.addEventListener('click',handleQuitButtonClick)
+  const handleAddOk = () => {
+    const data = addValidator()
+    if (!data) {
+      console.error('Error (handleAdd): data fue null')
+      return
     }
-    else{
-      console.log('Error (Add): okButton o quitButton fue null')
-    }
-   
-    return() => {
-      if(okButton && quitButton){
-        okButton.removeEventListener('click',handleOkButtonClick)
-        quitButton.removeEventListener('click',handleQuitButtonClick)
-      }
-      else{
-        console.log('Error (Add): okButton o quitButton fue null')
-      }
-    }
-  }, [])
-
-  
-  const handleOkButtonClick = () => {
-    const add = document.querySelector('.addContainer')
-    const container = document.querySelector('.container')
-    if(add && container){
-      container.style.transform = 'translate(0, 0)'
-      add.style.transform = 'translate(-500%, -50%)'
-    }
-    else{
-      console.log('Error (Add): add o container fue null')
-    }
-
-  }
-  
-  const handleQuitButtonClick = () => {
-    const add = document.querySelector('.addContainer')
-    const container = document.querySelector('.container')
-    if(add && container){
-      container.style.transform = 'translate(0, 0)'
-      add.style.transform =  'translate(-500%, -50%)'
-    }
-    else{
-      console.log('Error (Add): add o container fue null')
-    }
-
+    addDataHandler(data)
+    addViewHandler()
+    addReseter()
   }
 
-
+  const handleAddQuit = () => {
+    addViewHandler()
+    addReseter()
+  }
 
   return (
-    <form action="" className='addComponent'>
+    <div className='addComponent'>
       <div className='addContainer'>
         <div className='addHeader'>
           <h1>Agregar</h1>
           <div className='addHeaderButtonContainer'>
             <div className='addbuttonOk'>
-              <input type="submit" onClick={handleOkButtonClick}/>
-              <img src={okIcon} alt=""/>
+              <button onClick={handleAddOk}></button>
+              <img src={okIcon} alt="" />
             </div>
             <div className='addbuttonQuit'>
-              <button onClick={handleQuitButtonClick}></button>
-              <img src={quitIcon} alt=""/> 
+              <button onClick={handleAddQuit}></button>
+              <img src={quitIcon} alt="" />
             </div>
           </div>
         </div>
         <div className='addInfo'>
           <label htmlFor="nombre">Nombre</label>
-          <input type="text" name="nombre" id="nombre" required/>
+          <input id="nombre" />
           <label htmlFor="ciudad">Ciudad</label>
-          <input type="text" name='ciudad' id='ciudad'required/>
+          <input id='ciudad' />
           <label htmlFor="edad">Edad</label>
-          <input type="text" name="edad" id="edad" required/>
+          <input id="edad" />
         </div>
       </div>
-    </form>
+    </div>
   )
 }

@@ -3,17 +3,18 @@ import '../public/edit.css'
 import quitIcon from '../public/png/quit.png'
 import okIcon from '../public/png/ok.png'
 import { useEffect } from 'react'
+import { viewHandler_EditButtonClick } from '../viewHandlers'
 
 export const Edit = () => {
 
   useEffect(() => {
 
-    const okButton = document.querySelector('.editbuttonOk input')
+    const okButton = document.querySelector('.editbuttonOk button')
     const quitButton = document.querySelector('.editbuttonQuit button')
 
     if(okButton && quitButton){
-      okButton.addEventListener('click',handleOkButtonClick)
-      quitButton.addEventListener('click',handleQuitButtonClick)
+      okButton.addEventListener('click',viewHandler_EditButtonClick)
+      quitButton.addEventListener('click',viewHandler_EditButtonClick)
     }
     else{
       console.log('Error (Add): okButton o quitButton fue null')
@@ -21,43 +22,14 @@ export const Edit = () => {
    
     return() => {
       if(okButton && quitButton){
-        okButton.removeEventListener('click',handleOkButtonClick)
-        quitButton.removeEventListener('click',handleQuitButtonClick)
+        okButton.removeEventListener('click',viewHandler_EditButtonClick)
+        quitButton.removeEventListener('click',viewHandler_EditButtonClick)
       }
       else{
         console.log('Error (Add): okButton o quitButton fue null')
       }
     }
   }, [])
-
-  
-  const handleOkButtonClick = () => {
-    const add = document.querySelector('.editContainer')
-    const container = document.querySelector('.container')
-    if(add && container){
-      container.style.transform = 'translate(0, 0)'
-      add.style.transform = 'translate(500%, -50%)'
-    }
-    else{
-      console.log('Error (Add): add o container fue null')
-    }
-
-  }
-  
-  const handleQuitButtonClick = () => {
-    const add = document.querySelector('.editContainer')
-    const container = document.querySelector('.container')
-    if(add && container){
-      container.style.transform = 'translate(0, 0)'
-      add.style.transform =  'translate(500%, -50%)'
-    }
-    else{
-      console.log('Error (Add): add o container fue null')
-    }
-
-  }
-
-
 
   return (
     <form action="" className='editComponent'>
@@ -66,11 +38,11 @@ export const Edit = () => {
           <h1>Editar</h1>
           <div className='editHeaderButtonContainer'>
             <div className='editbuttonOk'>
-              <input type="submit" onClick={handleOkButtonClick}/>
+             <button></button>
               <img src={okIcon} alt=""/>
             </div>
             <div className='editbuttonQuit'>
-              <button onClick={handleQuitButtonClick}></button>
+              <button></button>
               <img src={quitIcon} alt=""/> 
             </div>
           </div>

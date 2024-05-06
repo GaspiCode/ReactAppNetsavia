@@ -28,6 +28,15 @@ export const Display = ({}) => {
   }
   datos.push(data)
 
+  const data2 = {
+    id: 2,
+    nombre: "Gaspar",
+    edad: 22,
+    ciudad: "buenos aires"
+  }
+  datos.push(data2)
+
+
 
   return (
     <div className="displayer">

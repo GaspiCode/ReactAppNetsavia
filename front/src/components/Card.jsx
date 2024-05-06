@@ -3,7 +3,7 @@ import editIcon from '../public/png/editar.png'
 import deleteIcon from '../public/png/borrar.png'
 import '../public/card.css'
 import { useEffect } from 'react'
-
+import { viewHandler_CardEditClick, viewHandler_CardDeleteClick } from '../viewHandlers'
 export const Card = (props) => {
 
   
@@ -13,8 +13,8 @@ export const Card = (props) => {
     const deleteButton = document.querySelector('.buttonDelete')
 
     if(editButton && deleteButton){
-      editButton.addEventListener('click',handleEditClick)
-      deleteButton.addEventListener('click',handleDeleteClick)
+      editButton.addEventListener('click',viewHandler_CardEditClick)
+      deleteButton.addEventListener('click',viewHandler_CardDeleteClick)
     }
     else{
       console.log('Error (PlusButton): editButton o deleteButton fue null')
@@ -23,41 +23,14 @@ export const Card = (props) => {
    
     return() => {
       if(editButton && deleteButton){
-        editButton.removeEventListener('click',handleEditClick)
-        deleteButton.removeEventListener('click',handleDeleteClick)
+        editButton.removeEventListener('click',viewHandler_CardEditClick)
+        deleteButton.removeEventListener('click',viewHandler_CardDeleteClick)
       }
       else{
         console.log('Error (PlusButton): plusButton fue null')
       }
     }
   }, [])
-
-  
-  const handleEditClick = () => {
-    const edit = document.querySelector('.editContainer')
-    const container = document.querySelector('.container')
-    if(edit && container){
-      container.style.transform = 'translate(-500%, 0)'
-      edit.style.transform = 'translate(-50%, -50%)'
-    }
-    else{
-      console.log('Error (PlusButton): edit o container fue null')
-    }
-
-  }
-
-  const handleDeleteClick = () => {
-    const confirm = document.querySelector('.confirmContainer')
-    const container = document.querySelector('.container')
-    if(confirm && container){
-      container.style.transform = 'translate(0, 500%)'
-      confirm.style.transform = 'translate(-50%, -50%)'
-    }
-    else{
-      console.log('Error (PlusButton): confirm o container fue null')
-    }
-
-  }
 
 
 
@@ -71,10 +44,10 @@ export const Card = (props) => {
         </div>
         <div className='buttonContainer'>
             <div className='buttons'>
-              <button className='buttonEdit' onClick={handleEditClick}>
+              <button className='buttonEdit'>
                 <img src={editIcon} alt="Icono Editar" />   
               </button>
-              <button className='buttonDelete' onClick={handleDeleteClick}>
+              <button className='buttonDelete'>
                 <img src={deleteIcon} alt="Icono Borrar" />
               </button>
                
