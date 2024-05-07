@@ -2,18 +2,18 @@ import React from 'react'
 import editIcon from '../public/png/editar.png'
 import deleteIcon from '../public/png/borrar.png'
 import '../public/card.css'
-import { CardDeleteViewHandler, CardEditViewHandler } from '../viewHandlers'
-import { sendIdEvent } from '../eventsDispatchers'
+import { cardDeleteViewHandler, cardEditViewHandler } from '../viewHandlers'
+import { sendIdEvent, sendDataEditEvent } from '../eventsDispatchers'
 export const Card = (props) => {
 
   const handleCardEdit = () => {
-    
-    CardEditViewHandler()
+    sendDataEditEvent(props)
+    cardEditViewHandler()
   }
 
   const handleCardDelete = () => {
     sendIdEvent(props.id)
-    CardDeleteViewHandler()
+    cardDeleteViewHandler()
   }
 
   return (

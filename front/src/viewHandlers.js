@@ -1,4 +1,3 @@
-
 export const addViewHandler = () => {
     const add = document.querySelector('.addContainer')
     const container = document.querySelector('.container')
@@ -23,8 +22,7 @@ export const confirmViewHandler = () => {
     }
 }
 
-
-export const viewHandler_EditButtonClick = () => {
+export const editViewHandler = () => {
     const edit = document.querySelector('.editContainer')
     const container = document.querySelector('.container')
     if (edit && container) {
@@ -36,11 +34,7 @@ export const viewHandler_EditButtonClick = () => {
     }
 }
 
-
-
-
-
-export const viewhandler_PlusButtonClick = () => {
+export const plusButtonViewHandler = () => {
     const add = document.querySelector('.addContainer')
     const container = document.querySelector('.container')
     if (add && container) {
@@ -54,7 +48,7 @@ export const viewhandler_PlusButtonClick = () => {
 }
 
 
-export const CardEditViewHandler = () => {
+export const cardEditViewHandler = () => {
     const edit = document.querySelector('.editContainer')
     const container = document.querySelector('.container')
     if (edit && container) {
@@ -67,7 +61,7 @@ export const CardEditViewHandler = () => {
 
 }
 
-export const CardDeleteViewHandler= () => {
+export const cardDeleteViewHandler = () => {
     const confirm = document.querySelector('.confirmContainer')
     const container = document.querySelector('.container')
     if (confirm && container) {

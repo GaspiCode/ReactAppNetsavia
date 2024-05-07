@@ -3,9 +3,9 @@ import '../public/add.css'
 import okIcon from '../public/png/ok.png'
 import quitIcon from '../public/png/quit.png'
 
-import { addReseter } from '../dataReseters'
+import { addViewDataResetter } from '../dataSetters'
 import { sendDisplayReloadEvent } from '../eventsDispatchers'
-import { addValidator } from '../dataValidators'
+import { addDataRetrieverAndValidator } from '../dataValidators'
 import { addDataFetcher } from '../dataFetchers'
 import { addViewHandler } from '../viewHandlers'
 
@@ -13,28 +13,27 @@ import { addViewHandler } from '../viewHandlers'
 export const Add = () => {
 
   const handleAddOk = async () => {
-    const data = addValidator()
+    const data = addDataRetrieverAndValidator()
     if (!data) {
-      console.error('Error (handleAdd): data fue null')
+      console.error('Error (handleAddOk): data fue null')
       return
     }
     try {
       await addDataFetcher(data)
       addViewHandler()
-      addReseter()
+      addViewDataResetter()
       sendDisplayReloadEvent()
     } catch (error) {
-      console.error('Error (handleAdd):', error);
+      console.error('Error (handleAddOk):', error);
     }
   }
 
   const handleAddQuit = () => {
     addViewHandler()
-    addReseter()
+    addViewDataResetter()
   }
 
   return (
-    <div className='addComponent'>
       <div className='addContainer'>
         <div className='addHeader'>
           <h1>Agregar</h1>
@@ -58,6 +57,5 @@ export const Add = () => {
           <input id="edad" />
         </div>
       </div>
-    </div>
   )
 }

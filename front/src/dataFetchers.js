@@ -59,6 +59,27 @@ export const confirmDataFetcher = async (id) => {
   }
 }
 
+export const editDataFetcher = async (data) => {
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }
+  try {
+    const response = await fetch('/data', options);
+
+    if (!response.ok) {
+      console.error('Error (editDataFetcher): Respuesta inesperada');
+      return 
+    }
+
+  } catch (error) {
+    console.error('Error (editDataFetcher):', error);
+  }
+}
+
 export const displayDataFetcher_Debug = async () => {
 
   const datos = []
