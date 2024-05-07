@@ -100,11 +100,11 @@
 
 
 .addInfo input:hover{
-    background-color: rgb(190,190,190);
+    background-color: rgb(60, 60, 60);
 }
 
 .addInfo input:focus{
-    background-color: rgb(190,190,190);
+    background-color: rgb(60, 60, 60);
 }
 
 .addInfo input:last-of-type{

@@ -54,7 +54,7 @@ export const viewhandler_PlusButtonClick = () => {
 }
 
 
-export const viewHandler_CardEditClick = () => {
+export const CardEditViewHandler = () => {
     const edit = document.querySelector('.editContainer')
     const container = document.querySelector('.container')
     if (edit && container) {
@@ -67,7 +67,7 @@ export const viewHandler_CardEditClick = () => {
 
 }
 
-export const viewHandler_CardDeleteClick = () => {
+export const CardDeleteViewHandler= () => {
     const confirm = document.querySelector('.confirmContainer')
     const container = document.querySelector('.container')
     if (confirm && container) {

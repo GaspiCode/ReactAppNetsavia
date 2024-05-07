@@ -52,7 +52,9 @@ class repository {
             return false
         }
     }
-    DeleteById = async (id) => {
+    DeleteById = async (value) => {
+        const id = value.id
+
         try {
             //Leer database y guardarla en un array
             const data = await new Promise((resolve, reject) => {
@@ -65,6 +67,12 @@ class repository {
                 })
             })
             const bdArray = JSON.parse(data)
+
+            //Ver si existe el elemento con la id proporcionada, por las dudas
+            if(!bdArray.find(item => item.id === id))
+                {
+                    console.error("Error (Repository.DeleteById): no se ha encontrado el elemento con la id proporcionada")
+                }
 
             //Filtrar el array, el que tenga la id suministrada se queda afuera
             const newBdArray = bdArray.filter(item => item.id !== id)

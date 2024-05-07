@@ -101,11 +101,11 @@
 
 
 .editInfo input:hover{
-    background-color: rgb(190,190,190);
+    background-color: rgb(60, 60, 60);
 }
 
 .editInfo input:focus{
-    background-color: rgb(190,190,190);
+    background-color: rgb(60, 60, 60);
 }
 
 .editInfo input:last-of-type{

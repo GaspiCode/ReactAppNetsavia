@@ -1,46 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../public/confirm.css'
 import okIcon from '../public/png/ok.png'
 import quitIcon from '../public/png/quit.png'
-import { useEffect } from 'react'
-import { viewHandler_ConfirmButtonClick } from '../viewHandlers'
+import { confirmViewHandler} from '../viewHandlers'
+import { sendDisplayReloadEvent } from '../eventsDispatchers'
+import { confirmDataFetcher } from '../dataFetchers'
 
 export const Confirm = () => {
 
-  useEffect(() => {
+  let[id, setId] = useState()
 
-    const okButton = document.querySelector('.confirmbuttonOk input')
-    const quitButton = document.querySelector('.confirmbuttonQuit button')
+  useEffect(()=>{
+    const confirm = document.querySelector('.confirmContainer')
+    confirm.addEventListener('sendIdEvent',handleId)
+  },[])
 
-    if (okButton && quitButton) {
-      okButton.addEventListener('click', viewHandler_ConfirmButtonClick)
-      quitButton.addEventListener('click', viewHandler_ConfirmButtonClick)
-    }
-    else {
-      console.log('Error (Confirm): okButton o quitButton fue null')
-    }
+  const handleId =(event) =>{
+    setId(event.detail.id)
+  }
 
-    return () => {
-      if (okButton && quitButton) {
-        okButton.removeEventListener('click', viewHandler_ConfirmButtonClick)
-        quitButton.removeEventListener('click', viewHandler_ConfirmButtonClick)
-      }
-      else {
-        console.log('Error (Confirm): okButton o quitButton fue null')
-      }
-    }
-  }, [])
-
+const handleConfirmOk = async () =>{
+  try {
+    await confirmDataFetcher(id)
+    confirmViewHandler()
+    sendDisplayReloadEvent()
+  } catch (error) {
+    console.error('Error (handleAdd):', error)
+  }
+}
+const handleConfirmQuit = () =>{
+  confirmViewHandler()
+}
+  
   return (
     <div className='confirmContainer'>
       <h1>Confirmar</h1>
       <div className='confirmHeaderButtonContainer'>
         <div className='confirmbuttonOk'>
-          <button></button>
+          <button onClick={handleConfirmOk}></button>
           <img src={okIcon} alt="" />
         </div>
         <div className='confirmbuttonQuit'>
-          <button></button>
+          <button onClick={handleConfirmQuit}></button>
           <img src={quitIcon} alt="" />
         </div>
       </div>

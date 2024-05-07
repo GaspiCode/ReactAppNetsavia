@@ -4,7 +4,7 @@ import okIcon from '../public/png/ok.png'
 import quitIcon from '../public/png/quit.png'
 
 import { addReseter } from '../dataReseters'
-import { displayReloader } from '../dataReloaders'
+import { sendDisplayReloadEvent } from '../eventsDispatchers'
 import { addValidator } from '../dataValidators'
 import { addDataFetcher } from '../dataFetchers'
 import { addViewHandler } from '../viewHandlers'
@@ -19,10 +19,10 @@ export const Add = () => {
       return
     }
     try {
-      await addDataFetcher(data);
-      addViewHandler();
-      addReseter();
-      displayReloader();
+      await addDataFetcher(data)
+      addViewHandler()
+      addReseter()
+      sendDisplayReloadEvent()
     } catch (error) {
       console.error('Error (handleAdd):', error);
     }

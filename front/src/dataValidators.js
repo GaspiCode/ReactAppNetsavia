@@ -20,7 +20,6 @@ export const addValidator = () => {
       return false
     }
     const data = {
-      id: null,
       nombre: name,
       edad: age,
       ciudad: city

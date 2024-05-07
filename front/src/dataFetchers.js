@@ -37,6 +37,28 @@ export const displayDataFetcher = async () => {
   }
 }
 
+export const confirmDataFetcher = async (id) => {
+  const data = {"id": id}
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  }
+  try {
+    const response = await fetch('/data', options);
+
+    if (!response.ok) {
+      console.error('Error (confirmDataFetcher): Respuesta inesperada');
+      return 
+    }
+
+  } catch (error) {
+    console.error('Error (confirmDataFetcher):', error);
+  }
+}
+
 export const displayDataFetcher_Debug = async () => {
 
   const datos = []
