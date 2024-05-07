@@ -4,29 +4,5 @@
     "edad": "22",
     "ciudad": "Buenos Aires",
     "id": 0
-  },
-  {
-    "nombre": "Damian",
-    "edad": "30",
-    "ciudad": "Resistencia",
-    "id": 1
-  },
-  {
-    "nombre": "Mateo",
-    "edad": 32,
-    "ciudad": "Barcelona",
-    "id": 5
-  },
-  {
-    "nombre": "Pablo",
-    "edad": "23",
-    "ciudad": "Cordoba",
-    "id": 6
-  },
-  {
-    "nombre": "Marta",
-    "edad": "32",
-    "ciudad": "Santa Fe",
-    "id": 7
   }
 ]

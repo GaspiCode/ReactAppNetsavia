@@ -15,16 +15,22 @@ class repository {
             })
             const bdArray = JSON.parse(data)
 
-            //Buscar id disponible
-            let flag = true, id = 0, k = 0
-            while (flag) {
-                if (!bdArray[k + 1])
-                    flag = false
-                if (bdArray[k].id === id)
-                    id++
-                k++
+            if (bdArray.length !== 0) {
+                //Buscar id disponible
+                let flag = true, id = 0, k = 0
+                while (flag) {
+                    if (!bdArray[k + 1])
+                        flag = false
+                    if (bdArray[k].id === id)
+                        id++
+                    k++
+                }
+                newRegister.id = id
+            } else {
+                newRegister.id = 0
             }
-            newRegister.id = id
+
+
 
             //Pushear al array
             bdArray.push(newRegister)
@@ -52,8 +58,8 @@ class repository {
             return false
         }
     }
-    DeleteById = async (value) => {
-        const id = value.id
+    DeleteById = async (body) => {
+        const id = body.id
 
         try {
             //Leer database y guardarla en un array
@@ -69,10 +75,10 @@ class repository {
             const bdArray = JSON.parse(data)
 
             //Ver si existe el elemento con la id proporcionada, por las dudas
-            if(!bdArray.find(item => item.id === id))
-                {
-                    console.error("Error (Repository.DeleteById): no se ha encontrado el elemento con la id proporcionada")
-                }
+            if (!bdArray.find(item => item.id === id)) {
+                console.error("Error (Repository.DeleteById): no se ha encontrado el elemento con la id proporcionada")
+                return false
+            }
 
             //Filtrar el array, el que tenga la id suministrada se queda afuera
             const newBdArray = bdArray.filter(item => item.id !== id)
@@ -81,7 +87,7 @@ class repository {
             bdArray.sort((a, b) => {
                 return a.id - b.id
             })
-            
+
             //Guardar de vuelta el array en database
             const newbdJSON = JSON.stringify(newBdArray, null, 2)
             await new Promise((resolve, reject) => {
@@ -156,13 +162,8 @@ class repository {
             return false
         }
     }
-    Update = async (id, field, value) => {
+    Update = async (body) => {
         try {
-            //No se puede cambiar una id
-            if (field === 'id') {
-                console.error('Error (Repository.Update): No se puede cambiar una id')
-                return false
-            }
             //Leer database y guardarla en un array
             const data = await new Promise((resolve, reject) => {
                 fs.readFile('bd.json', 'utf8', (err, data) => {
@@ -175,29 +176,33 @@ class repository {
             })
             const bdArray = JSON.parse(data)
 
-            //Aislar item con id igual a la suministrada
-            const item = bdArray.find(item => item.id === id)
-            //Filtrarlo
-            const newBdArray = bdArray.filter(item => item.id !== id)
-
-            //Encontrar campo donde se hizo la modificacion, si se encuentra se cambia el value y se pushea al array
-            //En caso de no encontrar el campo tira error y vuelve
-            if (item) {
-                if (field in item) {
-                    item[field] = value;
-                    newBdArray.push(item)
-                }
-                else {
-                    console.log('Error (Repository.Update): No se encontro ningun campo con el nombre proporcionado');
-                    return false;
-                }
-            } else {
-                console.log('Error (Repository.Update): No se encontro ningun elemento con el id especificado.');
-                return false;
+            //Ver si existe el elemento con la id proporcionada, por las dudas
+            if (!bdArray.find(item => item.id === body.id)) {
+                console.error("Error (Repository.DeleteById): no se ha encontrado el elemento con la id proporcionada")
+                return false
             }
 
+            //Aislar item con id igual a la suministrada
+            const item = bdArray.find(item => item.id === body.id)
+
+            //Filtrarlo
+            const newBdArray = bdArray.filter(item => item.id !== body.id)
+
+            //Sustituir los valores
+            item.nombre = body.nombre
+            item.edad = body.edad
+            item.ciudad = body.ciudad
+
+            //Pushear al array
+            newBdArray.push(item)
+
+            // Ordenar el array
+            newBdArray.sort((a, b) => {
+                return a.id - b.id
+            })
+
             //Guardar el array entero con el item modificado de vuelta
-            const newbdJSON = JSON.stringify(bdArray, null, 2)
+            const newbdJSON = JSON.stringify(newBdArray, null, 2)
             await new Promise((resolve, reject) => {
                 fs.writeFile('bd.json', newbdJSON, 'utf8', (err) => {
                     if (err) {

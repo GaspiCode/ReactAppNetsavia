@@ -42,6 +42,15 @@ app.delete('/data',async (req,res) => {
     
 })
 
+app.put('/data',async (req,res) => {
+    try{
+        await repository.Update(req.body)
+        res.status(200).send('OK')
+    }catch(err){
+        console.error(err)
+    }
+})
+
 
 app.listen(port,(res) => {
     console.log('Servidor iniciado en el puerto:  http://localhost:'+ port)

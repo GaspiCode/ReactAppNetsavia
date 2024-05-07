@@ -3,9 +3,10 @@ const fs = require('fs')
 const repository = new Repository
 
 const data = {
-    nombre: "Mateo",
-    edad: 32,
-    ciudad: "Barcelona"
+    nombre: "Martin",
+    edad: 25,
+    ciudad: "Sevilla",
+    id: 5
 }
 
 avaiableId = async () => {
@@ -42,7 +43,7 @@ avaiableId = async () => {
 //     })
 
 
-repository.Create(data)
+repository.Update(data)
     .then(result => {
         console.log(result)
     })
