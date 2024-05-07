@@ -11,6 +11,18 @@ export const addViewHandler = () => {
     }
 }
 
+export const confirmViewHandler = () => {
+    const confirm = document.querySelector('.confirmContainer')
+    const container = document.querySelector('.container')
+    if (confirm && container) {
+        container.style.transform = 'translate(0, 0)'
+        confirm.style.transform = 'translate(-50%, -800%)'
+    }
+    else {
+        console.log('Error (Confirm): confirm o container fue null')
+    }
+}
+
 
 export const viewHandler_EditButtonClick = () => {
     const edit = document.querySelector('.editContainer')
@@ -25,17 +37,7 @@ export const viewHandler_EditButtonClick = () => {
 }
 
 
-export const viewHandler_ConfirmButtonClick = () => {
-    const confirm = document.querySelector('.confirmContainer')
-    const container = document.querySelector('.container')
-    if (confirm && container) {
-        container.style.transform = 'translate(0, 0)'
-        confirm.style.transform = 'translate(-50%, -800%)'
-    }
-    else {
-        console.log('Error (Confirm): confirm o container fue null')
-    }
-}
+
 
 
 export const viewhandler_PlusButtonClick = () => {

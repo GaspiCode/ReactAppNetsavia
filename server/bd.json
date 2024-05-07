@@ -1,6 +1,6 @@
 [
   {
-    "id": 2,
+    "id": 0,
     "nombre": "juan",
     "edad": 32,
     "ciudad": "Barcelona"
@@ -12,13 +12,13 @@
     "ciudad": "Barcelona"
   },
   {
-    "id": null,
+    "id": 2,
     "nombre": "Pablo",
     "edad": "23",
     "ciudad": "Cordoba"
   },
   {
-    "id": null,
+    "id": 3,
     "nombre": "Martina",
     "edad": "32",
     "ciudad": "Rosario"

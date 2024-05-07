@@ -12,20 +12,20 @@ export const Confirm = () => {
     const okButton = document.querySelector('.confirmbuttonOk input')
     const quitButton = document.querySelector('.confirmbuttonQuit button')
 
-    if(okButton && quitButton){
-      okButton.addEventListener('click',viewHandler_ConfirmButtonClick)
-      quitButton.addEventListener('click',viewHandler_ConfirmButtonClick)
+    if (okButton && quitButton) {
+      okButton.addEventListener('click', viewHandler_ConfirmButtonClick)
+      quitButton.addEventListener('click', viewHandler_ConfirmButtonClick)
     }
-    else{
+    else {
       console.log('Error (Confirm): okButton o quitButton fue null')
     }
-   
-    return() => {
-      if(okButton && quitButton){
-        okButton.removeEventListener('click',viewHandler_ConfirmButtonClick)
-        quitButton.removeEventListener('click',viewHandler_ConfirmButtonClick)
+
+    return () => {
+      if (okButton && quitButton) {
+        okButton.removeEventListener('click', viewHandler_ConfirmButtonClick)
+        quitButton.removeEventListener('click', viewHandler_ConfirmButtonClick)
       }
-      else{
+      else {
         console.log('Error (Confirm): okButton o quitButton fue null')
       }
     }
@@ -36,7 +36,7 @@ export const Confirm = () => {
       <h1>Confirmar</h1>
       <div className='confirmHeaderButtonContainer'>
         <div className='confirmbuttonOk'>
-          <input type="submit" />
+          <button></button>
           <img src={okIcon} alt="" />
         </div>
         <div className='confirmbuttonQuit'>
