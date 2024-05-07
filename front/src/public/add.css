@@ -103,9 +103,6 @@
     background-color: rgb(60, 60, 60);
 }
 
-.addInfo input:focus{
-    background-color: rgb(60, 60, 60);
-}
 
 .addInfo input:last-of-type{
     margin-bottom: 0.7rem;
