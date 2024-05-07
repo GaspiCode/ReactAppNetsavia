@@ -16,17 +16,26 @@ class repository {
             const bdArray = JSON.parse(data)
 
             //Buscar id disponible
-            let id = 0;
-            while (bdArray[id]["id"] === id) {
-                id++
+            let flag = true, id = 0, k = 0
+            while (flag) {
+                if (!bdArray[k + 1])
+                    flag = false
+                if (bdArray[k].id === id)
+                    id++
+                k++
             }
-            data["id"] = id
+            newRegister.id = id
 
-            //Pushear al array y stringificarlo
+            //Pushear al array
             bdArray.push(newRegister)
-            const newbdJSON = JSON.stringify(bdArray, null, 2)
+
+            // Ordenar el array, tiene que estar ordenado para que el algoritmo de ids funcione
+            bdArray.sort((a, b) => {
+                return a.id - b.id
+            })
 
             //Guardar el array en database
+            const newbdJSON = JSON.stringify(bdArray, null, 2)
             await new Promise((resolve, reject) => {
                 fs.writeFile('bd.json', newbdJSON, 'utf8', (err) => {
                     if (err) {
@@ -59,9 +68,14 @@ class repository {
 
             //Filtrar el array, el que tenga la id suministrada se queda afuera
             const newBdArray = bdArray.filter(item => item.id !== id)
-            const newbdJSON = JSON.stringify(newBdArray, null, 2)
 
+            // Ordenar el array de vuelta por las dudas
+            bdArray.sort((a, b) => {
+                return a.id - b.id
+            })
+            
             //Guardar de vuelta el array en database
+            const newbdJSON = JSON.stringify(newBdArray, null, 2)
             await new Promise((resolve, reject) => {
                 fs.writeFile('bd.json', newbdJSON, 'utf8', (err) => {
                     if (err) {

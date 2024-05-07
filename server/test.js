@@ -1,22 +1,12 @@
 const Repository = require('./repository.js');
-
+const fs = require('fs')
 const repository = new Repository
 
-// const data = {
-//     id: 1,
-//     nombre: "Mateo",
-//     edad: 32,
-//     ciudad: "Barcelona"
-// }
-
-
-avaiableId()
-    .then(result => {
-        console.log(result)
-    })
-    .catch(err => {
-        console.error(err)
-    })
+const data = {
+    nombre: "Mateo",
+    edad: 32,
+    ciudad: "Barcelona"
+}
 
 avaiableId = async () => {
     const data = await new Promise((resolve, reject) => {
@@ -29,13 +19,33 @@ avaiableId = async () => {
         })
     })
     const bdArray = JSON.parse(data)
-
-    let id = 0;
-    while (bdArray[id]["id"] === id) {
-        id++
+    let flag = true, id = 0, k = 0
+    while (flag) {
+        if (!bdArray[k + 1])
+            flag = false
+        if (bdArray[k].id === id)
+            id++
+        k++
     }
     return id
 }
 
 //const response = await fetch('/data',{method: 'GET'})
 //console.log(repository.avaiableId())
+
+// repository.DeleteById(0)
+//     .then(result => {
+//         console.log(result)
+//     })
+//     .catch(err => {
+//         console.error(err)
+//     })
+
+
+repository.Create(data)
+    .then(result => {
+        console.log(result)
+    })
+    .catch(err => {
+        console.error(err)
+    })
