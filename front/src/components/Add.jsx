@@ -1,25 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../public/add.css'
 import okIcon from '../public/png/ok.png'
 import quitIcon from '../public/png/quit.png'
 
 import { addViewDataResetter } from '../dataSetters'
 import { sendDisplayReloadEvent } from '../eventsDispatchers'
-import { addDataRetrieverAndValidator } from '../dataValidators'
+import { dataValidator } from '../dataValidators'
 import { addDataFetcher } from '../dataFetchers'
 import { addViewHandler } from '../viewHandlers'
+import { addDataRetriever } from '../dataRetrievers'
 
 
 export const Add = () => {
 
   const handleAddOk = async () => {
-    const data = addDataRetrieverAndValidator()
-    if (!data) {
-      console.error('Error (handleAddOk): data fue null')
+    const newData = addDataRetriever()
+    if(!dataValidator(newData)){
       return
     }
     try {
-      await addDataFetcher(data)
+      await addDataFetcher(newData)
       addViewHandler()
       addViewDataResetter()
       sendDisplayReloadEvent()

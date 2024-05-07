@@ -6,16 +6,13 @@ import { useEffect } from 'react'
 import { editDataFetcher } from '../dataFetchers'
 import { editViewHandler } from '../viewHandlers'
 import { editViewDataResetter, editViewDataSetter } from '../dataSetters'
-import { editDataRetrieverAndValidator } from '../dataValidators'
+import { dataValidator } from '../dataValidators'
 import { sendDisplayReloadEvent } from '../eventsDispatchers'
+import { editDataRetriever } from '../dataRetrievers'
+
 export const Edit = () => {
 
-  //Aca
-  //Una practica que no me gusta tanto es guardar el estado de edit y add en los values de los inputs
-  //Recomendablemente esto se tendria que guardar en un usestate y de ahi derivarlo a los values y al fetcher
-  //Desde lejos se ve que es asi, pero por razones... lo voy a mantener asi
-  //Puede ser un fix para mas adelante?, el tema es que me enquilomba un poco mas el codigo
-  //El mismo debate de siempre, buenas practicas vs buen codigo
+  let [data, setData] = useState()
 
   useEffect(() => {
     const edit = document.querySelector('.editContainer')
@@ -23,17 +20,17 @@ export const Edit = () => {
   }, [])
 
   const handleSendDataEditEvent = (event) => {
-    editViewDataSetter(event.detail)
+      setData(event.detail)
+      editViewDataSetter(event.detail)
   }
 
   const handleEditOk = async () => {
-    const data = editDataRetrieverAndValidator()
-    if (!data) {
-      console.error('Error (handleEditOk): data fue null')
+    const newData = {...data,...editDataRetriever()}
+    if(!dataValidator(newData)){
       return
     }
     try {
-      await editDataFetcher(data)
+      await editDataFetcher(newData)
       editViewHandler()
       editViewDataResetter()
       sendDisplayReloadEvent()
@@ -43,7 +40,7 @@ export const Edit = () => {
   }
 
   const handleEditQuit = () => {
-    EditViewHandler()
+    editViewHandler()
     editViewDataResetter()
   }
 
@@ -64,11 +61,11 @@ export const Edit = () => {
       </div>
       <div className='editInfo'>
         <label htmlFor="nombre">Nombre</label>
-        <input id="nombre"/>
+        <input id="nombre" />
         <label htmlFor="ciudad">Ciudad</label>
-        <input id="ciudad"/>
+        <input id="ciudad" />
         <label htmlFor="edad">Edad</label>
-        <input id="edad"/>
+        <input id="edad" />
       </div>
     </div>
   )
