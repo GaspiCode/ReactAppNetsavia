@@ -8,9 +8,9 @@ export const sendDisplayReloadEvent = () => {
     display.dispatchEvent(resetEvent)
 }
 
-export const sendIdEvent = (id) => {
+export const sendIdEvent = (_id) => {
     const sendIdEvent = new CustomEvent('sendIdEvent', {
-        detail: { id: id }
+        detail: { _id: _id }
     })
     const confirm = document.querySelector('.confirmContainer')
     if (!confirm) {
@@ -26,7 +26,7 @@ export const sendDataEditEvent = (data) => {
             nombre: data.nombre,
             edad: data.edad,
             ciudad: data.ciudad,
-            id: data.id
+            _id: data._id
         }
     })
     const edit = document.querySelector('.editContainer')

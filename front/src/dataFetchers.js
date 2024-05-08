@@ -11,7 +11,7 @@ export const addDataFetcher = async (data) => {
 
     if (!response.ok) {
       console.error('Error (addDataFetcher): Respuesta inesperada');
-      return 
+      return
     }
 
   } catch (error) {
@@ -20,7 +20,7 @@ export const addDataFetcher = async (data) => {
 }
 
 export const displayDataFetcher = async () => {
-  
+
   try {
     const response = await fetch('/Data')
 
@@ -30,15 +30,16 @@ export const displayDataFetcher = async () => {
     }
 
     const jsonData = await response.json()
+
     return jsonData
-  
+
   } catch (err) {
-    console.error('Error (displayDataFetcher): Error en la solicitud',err)
+    console.error('Error (displayDataFetcher): Error en la solicitud', err)
   }
 }
 
-export const confirmDataFetcher = async (id) => {
-  const data = {"id": id}
+export const confirmDataFetcher = async (_id) => {
+  const data = { "_id": _id }
   const options = {
     method: 'DELETE',
     headers: {
@@ -51,7 +52,7 @@ export const confirmDataFetcher = async (id) => {
 
     if (!response.ok) {
       console.error('Error (confirmDataFetcher): Respuesta inesperada');
-      return 
+      return
     }
 
   } catch (error) {
@@ -61,7 +62,7 @@ export const confirmDataFetcher = async (id) => {
 
 export const editDataFetcher = async (data) => {
   const options = {
-    method: 'PUT',
+    method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -72,7 +73,7 @@ export const editDataFetcher = async (data) => {
 
     if (!response.ok) {
       console.error('Error (editDataFetcher): Respuesta inesperada');
-      return 
+      return
     }
 
   } catch (error) {
@@ -80,38 +81,3 @@ export const editDataFetcher = async (data) => {
   }
 }
 
-export const displayDataFetcher_Debug = async () => {
-
-  const datos = []
-
-  const data = {
-    id: 1,
-    nombre: "Mateo",
-    edad: 32,
-    ciudad: "Barcelona"
-  }
-  datos.push(data)
-
-  const data2 = {
-    id: 2,
-    nombre: "Gaspar",
-    edad: 22,
-    ciudad: "buenos aires"
-  }
-  datos.push(data2)
-
-  const data3 = {
-    id: 3,
-    nombre: "Pablo",
-    edad: 24,
-    ciudad: "entre rios"
-  }
-  datos.push(data3)
-  try {
-    const jsonData = datos
-    return jsonData
-  
-  } catch (err) {
-    console.error('Error (displayDataFetcher_Debug): Error en la solicitud',err)
-  }
-}

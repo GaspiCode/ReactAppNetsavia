@@ -1,15 +1,16 @@
 const Repository_MongoDb = require('./repository_mongodb')
+const ObjectId = require('mongodb').ObjectId
 const db = new Repository_MongoDb
 
 const data = {
-    nombre: "Martin",
-    edad: 25,
-    ciudad: "Sevilla",
-    id: 1
+    _id: '663b7029113e9905f0222071',
+    nombre: 'Juan',
+    edad: '22',
+    ciudad: 'Cordoba'
 }
 
 
-db.assingId()
+db.Update(data)
     .then(result => {
         console.log(result)
     })

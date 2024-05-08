@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { Card } from './Card'
 import '../public/display.css'
-import { displayDataFetcher_Debug, displayDataFetcher } from '../dataFetchers';
+import {  displayDataFetcher } from '../dataFetchers';
 
 export const Display = () => {
 
@@ -24,8 +24,8 @@ export const Display = () => {
     <div className="displayer">
         <ul>
             {datos.map((item) => (
-                <li key={item.id}>
-                  <Card id={item.id} nombre={item.nombre} edad={item.edad} ciudad={item.ciudad}/>
+                <li key={item._id}>
+                  <Card _id={item._id} nombre={item.nombre} edad={item.edad} ciudad={item.ciudad}/>
                 </li>
             ))}
         </ul>

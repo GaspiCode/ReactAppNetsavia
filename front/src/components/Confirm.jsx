@@ -16,11 +16,12 @@ export const Confirm = () => {
   }, [])
 
   const handleSendIdEvent = (event) => {
-    setId(event.detail.id)
+    setId(event.detail._id)
   }
 
   const handleConfirmOk = async () => {
     try {
+      console.log('(confirm)',id)
       await confirmDataFetcher(id)
       confirmViewHandler()
       sendDisplayReloadEvent()

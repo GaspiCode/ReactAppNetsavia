@@ -12,7 +12,7 @@ export const Card = (props) => {
   }
 
   const handleCardDelete = () => {
-    sendIdEvent(props.id)
+    sendIdEvent(props._id)
     cardDeleteViewHandler()
   }
 

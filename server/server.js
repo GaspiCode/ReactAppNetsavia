@@ -42,7 +42,7 @@ app.delete('/data',async (req,res) => {
     
 })
 
-app.put('/data',async (req,res) => {
+app.patch('/data',async (req,res) => {
     try{
         await repository.Update(req.body)
         res.status(200).send('OK')
