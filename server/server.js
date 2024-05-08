@@ -3,8 +3,8 @@ const path = require('path')
 const app = express()
 const port = 8080
 
-const Repository = require('./repository')
-const repository = new Repository
+const Repository_MongoDb = require('./repository_mongodb')
+const repository = new Repository_MongoDb
 
 app.use(express.static(path.join(__dirname,'../front/dist')))
 app.use(express.json())
